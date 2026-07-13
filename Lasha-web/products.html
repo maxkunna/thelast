@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products — LASHA LASHA</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --maroon:#4a1f22; --maroon-dark:#2c1214; --blush:#f6e2df; --blush-light:#fbf1ee;
+    --gold:#b98a63; --ink:#2b1a1a; --muted:#8a6f6a;
+  }
+  *{margin:0; padding:0; box-sizing:border-box;}
+  body{
+    background:var(--blush-light); color:var(--ink);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+ 
+  nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:0 5vw; background: var(--blush-light);
+    border-bottom: 1px solid rgba(74,31,34,0.05);
+    z-index: 60;
+    position: sticky; top:0;
+    height: 75px;
+    gap: 15px;
+  }
+.logo{font-family: Georgia,serif; font-size: 22px; letter-spacing: 5px; color: var(--maroon-dark); font-weight: 600; text-decoration: none; flex-shrink: 0;}
+  
+  .nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+  .navlinks{display:flex; gap:25px; align-items:center;}
+  .navlinks a{color:var(--maroon-dark); text-decoration:none; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500; transition:.3s;}
+  .navlinks a:hover, .social-nav a:hover{color:var(--gold);}
+  .navlinks .cta-nav{background:var(--maroon-dark); color:var(--blush-light); padding:9px 20px; border-radius:30px; font-size:11px; letter-spacing:2px; text-decoration:none; flex-shrink: 0;}
+  .navlinks .cta-nav:hover{background:var(--gold); color:var(--maroon-dark);}
+  
+  .social-nav{display: flex; gap: 15px; align-items: center; flex-shrink: 0;}
+  .social-nav a{color: var(--muted); font-size: 22px; transition: .3s;}
+
+  .p-header{
+    text-align:center; padding:70px 6vw 40px;
+    background:linear-gradient(180deg,var(--blush) 0%, var(--blush-light) 100%);
+  }
+  .p-header .eyebrow{color:var(--gold); letter-spacing:5px; font-size:11px; text-transform:uppercase; margin-bottom:12px;}
+  .p-header h1{font-family:Georgia,serif; font-size:clamp(26px,5vw,50px); color:var(--maroon-dark);}
+  .p-header p{margin-top:14px; color:var(--muted); font-size:14px;}
+
+ 
+  .grid{
+    max-width:1200px; margin:0 auto; padding:50px 4vw 120px;
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;
+    width: 100%;
+  }
+
+  .card{
+    background:#fff; border-radius:12px; overflow:hidden; cursor:pointer;
+    box-shadow:0 12px 30px rgba(44,18,20,.08); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s;
+    position:relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover{ transform:translateY(-8px); box-shadow:0 26px 50px rgba(44,18,20,.18); }
+  .card .thumb{ width:100%; aspect-ratio:1/1; overflow:hidden; background:var(--blush);}
+  .card .thumb img{width:100%; height:100%; object-fit:cover; transition:transform .5s;}
+  .card:hover .thumb img{transform:scale(1.08);}
+  
+
+  .card .info{padding:clamp(10px, 2vw, 20px) clamp(12px, 2vw, 22px);}
+  .card .info h3{font-family:Georgia,serif; font-size:clamp(14px, 2vw, 18px); color:var(--maroon-dark); margin-bottom:4px;}
+  .card .info .meta{font-size:clamp(10px, 1.5vw, 11.5px); color:var(--gold); letter-spacing:.5px; text-transform:uppercase; margin-bottom:8px; font-weight: 600;}
+  .card .info .desc{font-size:clamp(11px, 1.6vw, 13px); color:var(--muted); line-height:1.5;}
+
+  footer{padding:40px 6vw; text-align:center; background:var(--maroon-dark); color:#c9a9a3; font-size:12px;}
+  footer .flogo { font-family: Georgia, serif; color: var(--blush-light); letter-spacing: 2px; margin-bottom:10px; }
+  footer .fsocial{display:flex; gap:20px; justify-content:center; margin-top:16px;}
+  footer .fsocial a{color:#c9a9a3; text-decoration:none; font-size:12px; letter-spacing:1px;}
+  footer .fsocial a:hover{color:var(--gold);}
+
+ 
+  @media(max-width: 768px){
+    nav { height: 65px; padding: 0 4vw; gap: 10px; }
+    .logo { font-size: 18px; letter-spacing: 3px; }
+    .nav-right-group { gap: 12px; }
+    .navlinks { gap: 12px; }
+    .navlinks a { font-size: 18px; letter-spacing: 1px; }
+    .navlinks .cta-nav { padding: 7px 14px; font-size: 10px; letter-spacing: 1px; }
+    .social-nav { gap: 18px; }
+    .social-nav a { font-size: 22px; }
+
+    .grid { gap: 12px; padding: 30px 3vw 80px; }
+  }
+
+  @media(max-width:768px){
+
+    nav{
+        flex-wrap:wrap;
+        height:auto;
+        padding:12px 16px;
+    }
+
+    .nav-right-group{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .navlinks{
+        display:flex;
+        flex-wrap:wrap;
+        gap:10px;
+    }
+
+    .navlinks a{
+        display:inline-flex;
+        font-size:15px;
+    }
+
+    .social-nav{
+        gap:25px;
+    }
+}
+
+
+
+
+
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(30,14,15,.75); z-index:100;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition:opacity .4s ease;
+    backdrop-filter:blur(8px); padding:20px;
+  }
+  .modal-overlay.active{opacity:1; pointer-events:auto;}
+  .modal-box{
+    position:relative;
+    background:#fff; width:min(540px,92vw); border-radius:16px; overflow:hidden;
+    transform:scale(.6); opacity:0; transition:transform .45s cubic-bezier(.2,.85,.25,1.15), opacity .35s;
+    max-height:95vh; display:flex; flex-direction:column;
+  }
+  .modal-overlay.active .modal-box{transform:scale(1); opacity:1;}
+  
+  .modal-img-wrapper {
+    width: 100%;
+    height: 340px;
+    background: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  .modal-img-wrapper img{ width: 100%; height: 100%; object-fit: contain; }
+
+  .modal-gallery-under {
+    display: flex; justify-content: center; gap: 8px; padding: 10px 0; background: #fff;
+    border-bottom: 1px solid #f6e2df;
+  }
+  .modal-gallery-under img {
+    width: 48px; height: 48px; object-fit: cover; border-radius: 6px;
+    border: 2px solid #e9dcda; cursor: pointer; transition: .2s ease;
+  }
+  .modal-gallery-under img:hover, .modal-gallery-under img.active { border-color: var(--maroon-dark); transform: translateY(-2px); }
+
+  .modal-box .m-body{padding:20px 25px 25px;}
+  .modal-box h3{font-family:Georgia,serif; font-size:22px; color:var(--maroon-dark); margin-bottom:4px;}
+  .modal-box .m-meta{color:var(--gold); font-size:11.5px; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; font-weight: 600;}
+  .modal-box .m-desc{color:var(--muted); font-size:13px; line-height:1.6; margin-bottom:20px;}
+  
+  .modal-buttons{display:flex; gap:12px; flex-wrap:wrap;}
+  .modal-buttons a, .modal-buttons button{
+    padding:10px 24px; border-radius:30px; text-decoration:none; font-size:11.5px; letter-spacing:1px;
+    font-weight:600; text-transform:uppercase; cursor:pointer; border:none;
+  }
+  .buy-btn{background:var(--maroon-dark); color:var(--blush-light);}
+  .buy-btn:hover{background:var(--gold);}
+  .close-btn{background:transparent; border:1px solid #ddc7c1 !important; color:var(--muted);}
+  .close-btn:hover{color:var(--maroon-dark); border-color:var(--maroon-dark) !important;}
+  
+  .modal-close-x{
+    position:absolute; top:12px; right:12px; font-size:16px; color:#fff;
+    cursor:pointer; background:rgba(0,0,0,.4); border:none; width:28px; height:28px; border-radius:50%;
+    z-index:10; display:flex; align-items:center; justify-content:center;
+    transition: background 0.2s;
+  }
+  .modal-close-x:hover{ background: rgba(0,0,0,0.6); }
+
+  @media(max-height: 700px) {
+    .modal-img-wrapper { height: 240px; }
+    .modal-box .m-body { padding: 15px 20px 20px; }
+    .modal-box .m-desc { margin-bottom: 15px; font-size: 12.5px; }
+  }
+
+.shop-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+}
+
+/* .shop-modal-content{
+    background:#fff;
+    color:#222;   
+} */
+
+.shop-modal-content h2{
+    color:#fffdfd;
+    margin-bottom:20px;
+}
+
+.shop-modal-content .buy-btn{
+    color:#fff;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.close-modal{
+    position:absolute;
+    color: #f5eae7;
+    right:15px;
+    top:10px;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.buy-btn{
+    display:block;
+    text-decoration:none;
+    color:#fff;
+    padding:15px;
+    border-radius:12px;
+    margin-top:15px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.buy-btn:hover{
+    transform:scale(1.05);
+}
+
+.shopee-btn{
+    background:#fb6400;
+}
+
+.tiktok-btn{
+    background:#000;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">LASHA LASHA</a>
+  <div class="nav-right-group">
+    <div class="navlinks">
+      <a href="index.html">HOME</a>
+      <a href="products.html">PRODUCTS</a>
+        <a class="cta-nav" href="#" onclick="openShopModal(); return false;">
+    SHOP NOW
+</a>
+<div id="shopModal" class="shop-modal">
+    <div class="shop-modal-content">
+        <span class="close-modal" onclick="closeShopModal()">&times;</span>
+
+        <h2>เลือกช่องทางการสั่งซื้อ</h2>
+
+        <a class="buy-btn shopee-btn"
+           href="https://shopee.co.th/z2hmqxc9hg"
+           target="_blank">
+            🛒 Shopee
+        </a>
+
+        <a class="buy-btn tiktok-btn"
+           href="https://vt.tiktok.com/ZSX6DQWST/"
+           target="_blank">
+            🎵 TikTok Shop
+        </a>
+    </div>
+
+    </div>
+    
+    <div class="social-nav">
+      <a href="https://www.tiktok.com/@lasha.official?lang=th-TH" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/lash_a.official/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </div>
+</nav>
+
+<div class="p-header">
+  <div class="eyebrow">The Collection</div>
+  <h1>Choose Your Favorite Style</h1>
+  <p>9 สไตล์ให้เลือกตามลุคที่ต้องการ คลิกที่การ์ดเพื่อดูรายละเอียดและรูปแบบเต็มเพิ่มเติม</p>
+</div>
+
+<div class="grid" id="grid">
+  <!-- 1. Velvet Doll -->
+  <div class="card" data-folder="velvet_doll" data-img="images/velvet_doll.png" data-name="Velvet Doll" data-meta="Length 11 mm · Intensity: Baby Girl" data-desc="เรียบหรู ดูมีมนวล เหมาะกับลุคหวานละมุนที่ยังคงความอ่อนโยน">
+    <div class="thumb"><img src="images/velvet_doll.png" alt="Velvet Doll"></div>
+    <div class="info"><h3>Velvet Doll</h3><div class="meta">11 mm · Baby Girl</div><div class="desc">เรียบหรู ดูมีมนวล</div></div>
+  </div>
+  <!-- 2. Iconic Glow -->
+  <div class="card" data-folder="iconic_glow" data-img="images/iconic_glow.png" data-name="Iconic Glow" data-meta="Length 9–12 mm · Intensity: Baby Girl · Soft Glam" data-desc="ธรรมชาติ ใส่ได้ทุกวัน ความเงางามแบบซอฟต์กลามที่ไม่จัดจ้านเกินไป">
+    <div class="thumb"><img src="images/iconic_glow.png" alt="Iconic Glow"></div>
+    <div class="info"><h3>Iconic Glow</h3><div class="meta">9–12 mm · Soft Glam</div><div class="desc">ธรรมชาติ ใส่ได้ทุกวัน</div></div>
+  </div>
+  <!-- 3. Royal Flutter -->
+  <div class="card" data-folder="royal_flutter" data-img="images/royal_flutter.png" data-name="Royal Flutter" data-meta="Length 8–12 mm · Intensity: Princess" data-desc="ฟุ้ง เรียงเส้นสวย ให้ความรู้สึกหรูหราแบบเจ้าหญิง">
+    <div class="thumb"><img src="images/royal_flutter.png" alt="Royal Flutter"></div>
+    <div class="info"><h3>Royal Flutter</h3><div class="meta">8–12 mm · Princess</div><div class="desc">ฟุ้ง เรียงเส้นสวย</div></div>
+  </div>
+  <!-- 4. Siren Luxe -->
+  <div class="card" data-folder="siren_luxe" data-img="images/siren_luxe.png" data-name="Siren Luxe" data-meta="Length 9–12 mm · Intensity: Queen · Fox Eye" data-desc="ทรง Fox Eye ติดแล้วตาเรียว เพิ่มมิติแบบมีเสน่ห์ดึงดูด">
+    <div class="thumb"><img src="images/siren_luxe.png" alt="Siren Luxe"></div>
+    <div class="info"><h3>Siren Luxe</h3><div class="meta">9–12 mm · Queen</div><div class="desc">Fox eye ติดแล้วตาเรียว</div></div>
+  </div>
+  <!-- 5. Bombshell Icon -->
+  <div class="card" data-folder="bombshell_icon" data-img="images/bombshell_icon.png" data-name="Bombshell Icon" data-meta="Length 11 mm · Intensity: Princess" data-desc="Glam แบบผู้ดี มีพลัง เหมาะกับลุคที่ต้องการความมั่นใจเต็มร้อย">
+    <div class="thumb"><img src="images/bombshell_icon.png" alt="Bombshell Icon"></div>
+    <div class="info"><h3>Bombshell Icon</h3><div class="meta">11 mm · Princess</div><div class="desc">Glam แบบผู้ดี มีพลัง</div></div>
+  </div>
+  <!-- 6. Midnight Muse -->
+  <div class="card" data-folder="midnight_muse" data-img="images/midnight_muse.png" data-name="Midnight Muse" data-meta="Length 8–11 mm · Intensity: Princess" data-desc="เหมาะกับ Evening Look ความเข้มพอดี เพิ่มมิติให้ดวงตายามค่ำคืน">
+    <div class="thumb"><img src="images/midnight_muse.png" alt="Midnight Muse"></div>
+    <div class="info"><h3>Midnight Muse</h3><div class="meta">8–11 mm · Princess</div><div class="desc">เหมาะกับ evening look</div></div>
+  </div>
+  <!-- 7. Golden Hour -->
+  <div class="card" data-folder="golden_hour" data-img="images/golden_hour.png" data-name="Golden Hour" data-meta="Length 10–12 mm · Intensity: Baby Girl" data-desc="เบา สวย ดูเป๊ะแบบธรรมชาติ ให้แสงตาดูอบอุ่นตลอดวัน">
+    <div class="thumb"><img src="images/golden_hour.png" alt="Golden Hour"></div>
+    <div class="info"><h3>Golden Hour</h3><div class="meta">10–12 mm · Baby Girl</div><div class="desc">เบา สวย ดูเป๊ะแบบธรรมชาติ</div></div>
+  </div>
+  <!-- 8. Glam Booster -->
+  <div class="card" data-folder="glam_booster" data-img="images/glam_booster.png" data-name="Glam Booster" data-meta="Length 11 mm · Ultra-thin Layering · Add-on Option" data-desc="ซ้อนเฉพาะจุดเพื่อเพิ่มมิติ เหมาะเป็นตัวเสริมให้ลุคเดิมดูปังขึ้น">
+    <div class="thumb"><img src="images/glam_booster.png" alt="Glam Booster"></div>
+    <div class="info"><h3>Glam Booster</h3><div class="meta">11 mm · Add-on</div><div class="desc">ซ้อนเฉพาะจุด เพิ่มมิติ</div></div>
+  </div>
+  <!-- 9. Black Diamond -->
+  <div class="card" data-folder="blackdiamond" data-img="images/black_diamond.png" data-name="Black Diamond" data-meta="Length 12 mm · Intensity: Queen" data-desc="มีความเข้ม ทำให้ตาโตขึ้น เลือกสำหรับคนที่ต้องการลุคที่โดดเด่นที่สุด">
+    <div class="thumb"><img src="images/black_diamond.png" alt="Black Diamond"></div>
+    <div class="info"><h3>Black Diamond</h3><div class="meta">12 mm · Queen</div><div class="desc">มีความเข้ม ทำให้ตาโตขึ้น</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="flogo">LASHA LASHA</div>
+  <div>stick · slay · repeat</div>
+  <div class="fsocial">
+    <a href="https://www.tiktok.com/@lasha.official?lang=th-TH" target="_blank">TikTok</a>
+    <a href="https://www.instagram.com/lash_a.official/" target="_blank">Instagram</a>
+    <a href="https://shopee.co.th/z2hmqxc9hg" target="_blank">Shopee</a>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close-x" onclick="closeModal()">✕</button>
+    
+    <div class="modal-img-wrapper">
+      <img id="modalImg" src="" alt="">
+    </div>
+    
+    <div class="modal-gallery-under" id="modalGallery"></div>
+    
+    <div class="m-body">
+      <h3 id="modalName"></h3>
+      <div class="m-meta" id="modalMeta"></div>
+      <div class="m-desc" id="modalDesc"></div>
+      <div class="modal-buttons">
+   <a class="buy-btn" href="https://shopee.co.th/z2hmqxc9hg" target="_blank" style="background: #fb6400;">สั่งซื้อผ่าน Shopee</a>
+  <a class="buy-btn" href="https://vt.tiktok.com/ZSX6DQWST/" target="_blank" style="background: #000;">สั่งซื้อผ่าน TikTok</a>
+  <!-- <button class="close-btn" onclick="closeModal()">ปิด</button> -->
+</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('modalOverlay');
+  const modalImg = document.getElementById('modalImg');
+  const galleryContainer = document.getElementById('modalGallery');
+
+  document.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const imgMain = card.dataset.img;
+      const folderName = card.dataset.folder;
+
+      modalImg.src = imgMain;
+      document.getElementById('modalName').textContent = card.dataset.name;
+      document.getElementById('modalMeta').textContent = card.dataset.meta;
+      document.getElementById('modalDesc').textContent = card.dataset.desc;
+      
+      galleryContainer.innerHTML = '';
+      
+      for (let i = 1; i <= 3; i++) {
+        const thumbSrc = `images/${folderName}/${i}.png`;
+        createThumb(thumbSrc, i === 1);
+      }
+
+      overlay.classList.add('active');
+    });
+  });
+
+  function createThumb(src, isFirst) {
+    const thumb = document.createElement('img');
+    thumb.src = src;
+    if(isFirst) thumb.classList.add('active');
+    
+    thumb.onerror = function() { this.style.display = 'none'; };
+    
+    thumb.addEventListener('click', () => {
+      modalImg.src = src;
+      galleryContainer.querySelectorAll('img').forEach(i => i.classList.remove('active'));
+      thumb.classList.add('active');
+    });
+    galleryContainer.appendChild(thumb);
+  }
+
+  function closeModal(){ overlay.classList.remove('active'); }
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) closeModal(); });
+</script>
+
+</body>
+<script>
+function openShopModal(){
+    document.getElementById("shopModal").style.display="flex";
+}
+
+function closeShopModal(){
+    document.getElementById("shopModal").style.display="none";
+}
+
+window.onclick=function(e){
+    const modal=document.getElementById("shopModal");
+    if(e.target===modal){
+        modal.style.display="none";
+    }
+}
+</script>
+
+</html>
